@@ -10,10 +10,11 @@ max_length = 100
 def getTitle(file_path):
 	with open(file_path) as text_file:
 		first_line = text_file.readline()
+		title = first_line.rstrip()
 		
 		# Blacklist: [ ] / \ = + < > : ; " , * .
 		# https://forums.dropbox.com/topic.php?id=23023
-		title = re.sub('[\[\]/\\=\+<>:;",\*\.]+', '', first_line)
+		title = re.sub('[\[\]/\\=\+<>:;",\*\.]+', '', title)
 		title = title.strip('#') # Markdown title marks
 		if len(title) > max_length:
 			title = title[:max_length]
