@@ -25,6 +25,8 @@ def getTitle(file_path):
 
 def refreshFileName(file_path):
 	title = getTitle(file_path)
+	if len(title) == 0:
+		return
 	
 	file_name = os.path.basename(file_path)
 	old_base_name = os.path.splitext(file_name)[0]
