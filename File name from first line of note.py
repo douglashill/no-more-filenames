@@ -25,16 +25,20 @@ def getTitle(file_path):
 
 def refreshFileName(file_path):
 	title = getTitle(file_path)
+
+	# Don’t want to rename new files to .txt, which makes them hard to fine.
 	if len(title) == 0:
 		return
 	
 	file_name = os.path.basename(file_path)
 	old_base_name = os.path.splitext(file_name)[0]
 	extension = os.path.splitext(file_name)[1]
-	
+
+	# Don’t write if the name already matches.
 	if old_base_name == title:
 		return
-	
+
+	# Add numbers to avoid the same name.
 	counter = 1
 	while os.path.exists(os.path.join(os.path.dirname(file_path), title + extension)):
 		++counter
