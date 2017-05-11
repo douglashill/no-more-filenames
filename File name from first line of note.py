@@ -13,7 +13,6 @@ def getTitle(file_path):
 		title = first_line.rstrip()
 		
 		# Blacklist: [ ] / \ = + < > : ; " , * .
-		# https://forums.dropbox.com/topic.php?id=23023
 		title = re.sub('[\[\]/\\=\+<>:;",\*\.]+', '', title)
 		title = title.strip('#') # Markdown title marks
 		if len(title) > max_length:
