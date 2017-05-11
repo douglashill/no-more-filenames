@@ -12,8 +12,8 @@ def getTitle(file_path):
 		first_line = text_file.readline()
 		title = first_line.rstrip()
 		
-		# Blacklist: [ ] / \ = + < > : ; " , * .
-		title = re.sub('[\[\]/\\=\+<>:;",\*\.]+', '', title)
+		# Blacklist: / :
+		title = re.sub('[/:]+', '', title)
 		title = title.strip('#') # Markdown title marks
 		if len(title) > max_length:
 			title = title[:max_length]
